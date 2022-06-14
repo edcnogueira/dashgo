@@ -1,8 +1,8 @@
-import { FormControl, FormLabel, Input as ChakraInput } from "@chakra-ui/react";
+import { FormControl, FormErrorMessage, FormLabel, Input as ChakraInput } from "@chakra-ui/react";
 
-export function Input({ name, label, ...rest }) {
+export function Input({ name, label, error = null, ...rest }) {
     return (
-        <FormControl>
+        <FormControl isInvalid={!!error}>
             {!!label && <FormLabel htmlFor={name}>{label}</FormLabel>}
             <ChakraInput
                 name={name}
@@ -16,6 +16,12 @@ export function Input({ name, label, ...rest }) {
                 size="lg"
                 {...rest}
             />
+            {!!error && (
+
+                <FormErrorMessage>
+                    {error.message}
+                </FormErrorMessage>
+            )}
         </FormControl>
     )
 }
