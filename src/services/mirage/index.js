@@ -18,7 +18,5 @@ export function makeServer() {
     },
   });
 
-  console.log("teste");
-
   return server;
 }
